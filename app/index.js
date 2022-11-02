@@ -23,6 +23,14 @@ import passport from 'passport';
 import passportLocal from 'passport-local';
 import flash from 'connect-flash'; // to show connection error and success msgs
 
+// Modules for JWT Support
+import cors from 'cors';                    // not a good practice for production - only dev time - cross site forgery requests - enables angular app in the future to connect to our server - remove when you move to production
+import passportJWT from 'passport-jwt';     // 
+
+// Definign variables for extracting strategy and JWToken 
+let JWTStrategy = passportJWT.Strategy;     // part of how passort works
+let ExtractJWT = passportJWT.ExtractJwt;    // defines how we extract info from the token
+
 // Week5 - AUth Step2 - define auth strategy
 let localStrategy = passportLocal.Strategy;
 
@@ -52,6 +60,10 @@ import authRouter from './routes/auth.route.server.js'
  // ***************************************************************************
 
 
+
+// Import API routes
+import authApiRouter from "./routes/api/auth-api.router.server.js";
+
 // Instantiating the express module to be used later as an object
 const index = express();
 
@@ -78,6 +90,8 @@ index.use(cookieParser());
 index.use(express.static(path.join(__dirname, '../public')));
 // **********************************************************
 
+index.use(cors()); // adds CORS (Cross-origin resource sharing) to express app - *******To be removed during production time**********
+
 // Week5 - Auth Step 4 - Setup express session (done from before)
 index.use(session({           
     secret: Secret,
@@ -99,6 +113,26 @@ passport.use(User.createStrategy()); // adding a plugin into passport and becaus
 passport.serializeUser(User.serializeUser()); // this is to serialize user passprt so that the info is encrytpted in the db
 passport.deserializeUser(User.deserializeUser()); // does the same as above 
 
+// Setup JWT Options to extract the JWTokens payload
+let jwtOptions = {
+    jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+    secretOrKey: Secret
+}
+
+// Setup JWT Strategy that chesk if a user exists everytime we recieve a pyload
+let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) => {
+    // Check if user exists and isbeng done differently rom before because we are not rendering any html to the user just send the msg 
+    User.findById(jwt_payload.id)
+        .then(user =>{
+            return done(null,user)
+        })
+        .catch (err => {
+            return done(err, false)
+        });
+});
+
+passport.use(strategy);
+
 // telling this file to use routing logic for index.ejs file from router folder which contains the file above
 // wiring up index router 
 index.use('/', indexRouter);
@@ -108,5 +142,7 @@ index.use('/', movieRouter);
 
 // Week 5 added here
 index.use('/', authRouter);
+
+index.use('/api/auth', authApiRouter);     // change sthe endpoint fr the authrouter
 
 export default index;

@@ -12,7 +12,7 @@ export const Secret = "MySecret"
                                             // Rememebr - /media is added so that we tell our that we are starting a new database called 'media' at the provided address above
                                             //              and 127.0.0.1 is local host anyway
 
-export const MongoURI = "mongodb+srv://darosh:Wvam6305161!@comp229-week5.hllnhbm.mongodb.net/media1?retryWrites=true&w=majority" // we use media1 same way we used the connectipon to media up above - at this point
+export const MongoURI = "mongodb+srv://darosh:darosh123456@cluster0.rgtxyxa.mongodb.net/Assignment3?retryWrites=true&w=majority" // we use media1 same way we used the connectipon to media up above - at this point
                                                                                                                                  // we do not need the local mongod or mongosh connection 
                                                                                                                                  // make sure you add the ip 0.0.0.0/0 to allow anyone to access it with permiosisons
                                                                                                                                  // media1 becomes the new name of the db on atlas
