@@ -1,0 +1,54 @@
+<!--Author : Darosh Irani
+// Student ID : 822955068
+// Filename : contactme.ejs
+// Dated : October 2nd, 2022 -->
+
+<!-- Template source - class-->
+
+<html>
+    <head>
+        <Title><%= title %></Title> <!-- to use variables its the %'=' to include variable coming from the render method in index.controller.server.js file -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap.min.css" integrity="sha512-siwe/oXMhSjGCwLn+scraPOWrJxHlUgMBMZXdPe2Tnk3I0x3ESCoLz7WZ5NTH6SZrywMY+PB1cjyqJ5jAluCOg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap.rtl.min.css" integrity="sha512-v/0rtuCuKOmpkT153wINc6H7UtLualQIhOpXdmB4Y1KtYBBtg++8UFPyYJBHLmnd2qBbrKvO+eudewymb5FW6w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap-grid.min.css" integrity="sha512-95rjxgceX8l8NTRpxqRWwYWAl5jhwmGHGtmwgaA5++tITaixvU/RipgbZIBwp/912s9AE5AZGs9EM3gSBx6OuQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap-grid.rtl.min.css" integrity="sha512-2xiilj6g5AJSPqgpldERcCwPIC7S1uNq7469YTV6zEtAGwjur4UeK5W+M0EhG7ZH0EupPrYu5lVKNjgt9E0Q8Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap-reboot.min.css" integrity="sha512-gQV25rI/jSSCM5lIa2dUcCJbrpBDxnl14A2NIIfR5KKISmtycvAcBYbS3wi8HH7eRYo4ldhmSaZnqGlD/M4Mvw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap-reboot.rtl.min.css" integrity="sha512-mAV5Aoe7fk3ckMTYnv7+K6XHiHw5PQ0nOC0lcsoAMcYO5WMUYroG+5aoYRewsJoBB95L8adu7Nr1WoiucRImxA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap-utilities.min.css" integrity="sha512-/j+mUkUn8RkWly6SVmNCaTNXRhoZAhe/mDv3+EgwjBEhQemU2smhHIDrAiC+qE3GpnwBKLd//8X2yq2axnJLnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap-utilities.rtl.min.css" integrity="sha512-gZkxis3omp82ModtP2XWqVg8X6BEsAFd7r+i0v6iYAl9gKXKQ03BSOEVWQizgW6Gvo+rkJJGdbjocGvitsAxMg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="./content/app.css"> <!-- This line will allow us to load the static page content from the public folder--> 
+    </head>
+    <body>
+
+        <!-- Navigation -->
+        <header>
+            <%- include('partials/header.ejs'); %> <!-- '%- include' is signature of code to instruct the redirection as noted below to FOLDERS thast why theres the '-' after % - 
+                                                        EJS gives us a way to reuse components 
+                                                        and the contents acocrdingly to put into components ... so here we redirect header to get components 
+                                                        from our components/header.ejs directory (visible in file/folder structure) you have to 'include' with html tags --> 
+        </header>
+
+        <!-- Main -->
+        <Main>
+            
+            <%- include('content/' + page + '.ejs'); %> <!--we are now 'including' (which is actually a fn in js) parameters content + concantenating 'page' variable from index.js
+                                                        + 'ejs' extension --- this way we reload from the content folder the content in each page.ejs we save to the template in 
+                                                        this index.ejs file-->
+        </Main>
+
+        <!-- Footer-->
+        <Footer>
+            <%- include('partials/footer.ejs'); %> <!--EJS gives us a way to reuse components and the contents acocrdingly to put into components ... 
+                                                        so here we redirect footer to get components from our components/footer.ejs directory (visible on left side) -->
+        </Footer>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/js/bootstrap.bundle.min.js" integrity="sha512-1TK4hjCY5+E9H3r5+05bEGbKGyK506WaDPfPe1s/ihwRjr6OtL43zJLzOFQ+/zciONEd+sp7LwrfOCnyukPSsg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/js/bootstrap.min.js" integrity="sha512-vyRAVI0IEm6LI/fVSv/Wq/d0KUfrg3hJq2Qz5FlfER69sf3ZHlOrsLriNm49FxnpUGmhx+TaJKwJ+ByTLKT+Yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js" integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="./scripts/app.js"></script> <!-- Allows us to run the js code from scripts folder under public/content/scripts/app.js - this script file is sent ott client side to load from there
+                                                    -- PUBLIC FOLDER WILL LOAD CONTENT AND SEND TO CLIENT SIDE - WE WORK WITH HTMML FILES AS STATIC FILES TO PERFORM THE SENDING-->
+    </head>
+    </body>
+</html>

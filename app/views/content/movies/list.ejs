@@ -1,0 +1,64 @@
+<!-- code added in Week 4-->
+
+<div class="container">
+    <h1>Movie List</h1>
+
+    <!-- Added in Week 5 - If the userName is available display the buttons to edit and delete and Add-->
+    <% if(displayName) { %>
+    <a href="/movie-add" class="btn btn-primary" role="button">
+        <i class="fas fa-plus-circle"></i> Add a Movie</a>
+    <% } %>
+
+    
+    <div class="row">
+        <div class="col">
+    
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col" class="text-center">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Year</th>
+                        <th scope="col">Director</th>
+                        <th scope="col">Genre</th>
+                        <th scope="col">Runtime</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="movieList">
+                    <!-- Repeatable Rows -->
+                    <% for(let count = 0; count < movies.length; count++) { %>          <!--For loop that will fill up the table when items are added ****** -->
+                        <tr>                                                            <!-- <tr> stands for all the information in the row and that info ends at </tr>-->
+                            <th scope="row" class="text-center"><%= count + 1 %></th>   <!-- <th> provides the background for the row cells that will be filled across and <td> stands for the actual datat going in each cell - HTML -->
+                            <td><%= movies[count].name %></td>                          <!-- Movie on index [1] . name will be called from the array in the movies.js file and filled into the <td> for cell 1-->
+                            <td><%= movies[count].year %></td>
+                            <td><%= movies[count].director %></td>
+                            <td><%= movies[count].genre %></td>
+                            <td><%= movies[count].runtime %></td>
+                            
+                            <!-- Added in Week 5 - If the userName is available display the buttons to edit and delete-->
+                            <% if(displayName) { %>
+
+                            <td class="text-center col-1">
+                                <a href="/movie-edit/<%= movies[count]._id %>"        
+                                    class="btn btn-primary btn-sm">
+                                    <i class="fas fa-pencil-alt"></i> Edit</a>          <!-- these buttons are not added until the row is populated-->
+                            </td>
+                            
+                            <td class="text-center col-1">
+                                <a href="/movie-delete/<%= movies[count]._id %>"
+                                    class="btn btn-danger btn-sm">
+                                    <i class="fas fa-trash-alt"></i> Delete</a>         <!-- these buttons are not added until the row is populated-->
+                            </td>
+                            
+                            <!-- Added in week 5 - end of if statement from above-->
+                            <% } %> 
+
+                        </tr>
+                    <% } %>                                                             <!--For loop ends here **************************************************-->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

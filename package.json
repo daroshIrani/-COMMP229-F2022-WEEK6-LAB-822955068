@@ -1,0 +1,35 @@
+{
+  "name": "assignment-2_week4_daroshirani_822955068",
+  "version": "1.0.1",
+  "description": "My Assignment 2",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daroshIrani/COMP229_ASSIGNMENT2_DaroshIrani_822955068.git"
+  },
+  "author": "Darosh Irani_822955068",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daroshIrani/COMP229_ASSIGNMENT2_DaroshIrani_822955068/issues"
+  },
+  "homepage": "https://github.com/daroshIrani/COMP229_ASSIGNMENT2_DaroshIrani_822955068#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "mongoose": "^6.6.5",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^7.1.2",
+    "serve-static": "^1.15.0"
+  }
+}

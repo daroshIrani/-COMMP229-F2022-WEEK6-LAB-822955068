@@ -1,0 +1,82 @@
+<!--Author : Darosh Irani
+// Student ID : 822955068
+// Filename : header.ejs
+// Dated : October 2nd, 2022 -->
+
+<!-- Template source class-->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-xl">
+      <a class="navbar-brand <%=(page == 'home') ? 'active' : ''; %>" aria-current="page" href="/home"" ><img src = "./content/images/Logo1.jpg" height="100" alt = "Logo1"> Darosh Irani</a> 
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link <%=(page == 'home') ? 'active' : ''; %>" aria-current="page" href="/home"><i class="fa-solid fa-house"></i> Home</a> <!--TheEJS include 
+                                                                                                                    statement goes inside the class. It means
+                                                                                                                    if the page (variable defined in index.controller.server.js)
+                                                                                                                    is = home then make it the active page(url has index/home),
+                                                                                                                     if not make it blank and load index page-->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <%=(page == 'about') ? 'active' : ''; %>" aria-current="page" href="/about"><i class="fa-solid fa-user"></i> About</a> <!--TheEJS include statement goes inside the class. It means
+                                                                                                                    if the page (variable defined in index.controller.server.js)
+                                                                                                                    is = about then make it the active page(url has index/home),
+                                                                                                                     if not make it blank and load index page-->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <%=(page == 'projects') ? 'active' : ''; %>" aria-current="page" href="/projects"><i class="fa-solid fa-pen-nib"></i> Projects</a> <!--TheEJS include statement goes inside the class. It means
+                                                                                                                    if the page (variable defined in index.controller.server.js)
+                                                                                                                    is = projects then make it the active page(url has index/home),
+                                                                                                                     if not make it blank and load index page-->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <%=(page == 'services') ? 'active' : ''; %>" aria-current="page" href="/services"><i class="fa-solid fa-clipboard"></i> Services</a> <!--TheEJS include statement goes inside the class. It means
+                                                                                                                    if the page (variable defined in index.controller.server.js)
+                                                                                                                    is = services then make it the active page(url has index/home),
+                                                                                                                     if not make it blank and load index page-->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <%=(page == 'contact') ? 'active' : ''; %>" aria-current="page" href="/contact"><i class="fa-solid fa-hand"></i> Contact</a> <!--TheEJS include statement goes inside the class. It means
+                                                                                                                    if the page (variable defined in index.controller.server.js)
+                                                                                                                    is = contact then make it the active page(url has index/home),
+                                                                                                                     if not make it blank and load index page-->
+          </li>
+          <!-- Week 5 - Movie list is always avialable but we cant edit it (Mobved up here from below to allow functionality of display only to all user)-->
+          <li class="nav-item">
+            <a class="nav-link <%=(page == 'movie-list') ? 'active' : ''; %>" aria-current="page" href="/movie-list"><i class="fa-solid fa-table-list"></i> Movies List</a> <!--TheEJS include statement goes inside the class. It means
+                                                                                                                    if the page (variable defined in index.controller.server.js)
+                                                                                                                    is = contact then make it the active page(url has index/home),
+                                                                                                                     if not make it blank and load index page-->
+          </li>
+
+          <!-- Added for Week 5-->
+          <% if(displayName) { %> <!-- If display name is available - I am authorized, i can see the movie list-->
+          
+          <!-- Added in Week 4 -->
+          <!-- <li class="nav-item"> -->
+          <!--  <a class="nav-link <%=(page == 'movie-list') ? 'active' : ''; %>" aria-current="page" href="/movie-list"><i class="fa-solid fa-table-list"></i> Movies List</a> --> <!--TheEJS include statement goes inside the class. It means
+                                                                                                                    if the page (variable defined in index.controller.server.js)
+                                                                                                                    is = contact then make it the active page(url has index/home),
+                                                                                                                     if not make it blank and load index page-->
+          <!-- </li> -->
+
+          <!-- Week 5 Display of logout button -->
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/logout"><i class="fa-solid fa-right-from-bracket fa-lg"></i> Logout</a>
+          </li>
+
+          <% } else { %>
+          <!-- Added for Week 5 - Display of login button-->
+          <li class="nav-item">
+            <a class="nav-link <%= (page == 'login') ? 'active' : ''; %>" aria-current="page" href="/login"><i class="fa-solid fa-right-to-bracket fa-lg"></i> Login</a>
+          </li>
+
+          <% } %>
+
+        </ul>
+      </div>
+    </div>
+  </nav>

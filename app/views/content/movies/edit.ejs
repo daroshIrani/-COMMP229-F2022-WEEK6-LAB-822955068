@@ -1,0 +1,71 @@
+
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <h1><%= title %></h1>
+
+            <form class="form" method="POST"> <!-- We submit the body of the form with a POST  request  HTTP methods - POST, PUT, GET, DELETE used for form-->
+                <input type="hidden" name="id" value="<%= movie._id %>" > <!-- The 'movie'._id and so on is gotten from the list.ejs file as fields that have to be filled and used when creating the table from the form-->
+                <div class="form-group">
+                    <label for="nameTextField">Movie Title</label>
+                    <input type="text" class="form-control"
+                    id="nameTextField"
+                    placeholder="Enter the Movie Title"
+                    name="name" 
+                    value="<%= movie.name %>"
+                    required>
+                </div>
+
+                <div class="form-group">
+                    <label for="authorTextField">Year</label>
+                    <input type="number" class="form-control"
+                    id="authorTextField"
+                    placeholder="Enter the Release Year"
+                    name="year" 
+                    value="<%= movie.year %>"
+                    required>
+                </div>
+
+                <div class="form-group">
+                    <label for="publishedTextField">Director</label>
+                    <input type="text" class="form-control"
+                    id="publishedTextField"
+                    placeholder="Enter the Director's Name"
+                    name="director" 
+                    value="<%= movie.director %>"
+                    required>
+                </div>
+
+                <div class="form-group">
+                    <label for="descriptionTextArea">Genre</label>
+                    <input type="text" class="form-control"
+                    id="descriptionTextArea"
+                    placeholder="Enter the Movie genre"
+                    name="genre"                     
+                    value="<%= movie.genre %>"
+                    required
+                    >
+                    </input>
+                </div>
+
+                <div class="form-group">
+                    <label for="priceTextField">Runtime (in minutes)</label>
+                    <input type="number" class="form-control"
+                    id="priceTextField"
+                    placeholder="Enter the Movie's Runtime in Minutes"
+                    name="runtime" 
+                    value="<%= movie.runtime %>"
+                    required>
+                </div>
+
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-edit"></i> Submit</button>
+                
+                    <a href="/movie-list" class="btn btn-warning"> <!-- Cancel goes back to the movie-list.ejs page-->
+                        <i class="fas fa-undo"></i> Cancel</a>
+
+            </form>
+        </div>
+
+    </div>
+</div>
