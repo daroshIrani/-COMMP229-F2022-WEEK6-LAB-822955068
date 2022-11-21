@@ -4,7 +4,7 @@ import { processLogin, processLogout, processRegistration } from "../../controll
 const router = Router();
 
 
-// three endpoints
+// three endpoints for the routes and they will return JSON objects not HTML renders
 router.post('/login', processLogin);
 router.post('/register', processRegistration);
 

@@ -16,7 +16,7 @@ export function processLogin(req,res, next){
         }
 
         // noporblems we have a good username and password
-        req.login(user, (err) =>{
+        req.logIn(user, (err) =>{
             // are there any db errors
             if (err){
                 console.error(err);
@@ -27,14 +27,14 @@ export function processLogin(req,res, next){
 
             return res.json({
                 success: true,
-                msg: 'User Loggen In Successfully',
+                msg: 'User Logged In Successfully',
                 user: {
                     id: user._id,
                     displayName: user.displayName,
                     username: user.username,
                     emailAddress: user.emailAddress
                 },
-                token: authToken
+                token: authToken                    // Any application can use this token if the userModel is t he same and can use this token to authenticate again
 
             })
         })
@@ -66,10 +66,10 @@ export function processRegistration(req, res, next){
     })
 }
 
-export function processLogout(re, res, next){
+export function processLogout(req, res, next){
     req.logOut((err)=>{
         if (err){
-            consnole.error(err);
+            console.error(err);
             res.end (err);
         }
 
